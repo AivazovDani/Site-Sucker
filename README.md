@@ -83,7 +83,7 @@ projects/
 
 ### Prerequisites
 
-- Python 3.10+
+- Python
 - Redis running locally or via Docker
 - Anthropic API key
 
