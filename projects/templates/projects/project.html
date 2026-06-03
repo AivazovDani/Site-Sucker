@@ -1,0 +1,44 @@
+{% extends 'main.html' %}
+{% block content %}
+<main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+        <div class="column column--1of3">
+          <h3 class="singleProject__subtitle">Tools & Stacks</h3>
+          <div class="project__tags" style="margin-top: 1rem;">
+            {% if project.status == 'pending' %}
+            <span class="tag tag--pill tag--sub"><small>Pending</small></span>
+            {% elif project.status == 'processing' %}
+            <span class="tag tag--pill tag--main"><small>Processing</small></span>
+            {% elif project.status == 'ready' %}
+            <span class="tag tag--pill" style="background: var(--color-success-bg); color: var(--color-success);"><small>Ready</small></span>
+            {% elif project.status == 'failed' %}
+            <span class="tag tag--pill" style="background: var(--color-error-bg); color: var(--color-error);"><small>Failed</small></span>
+            {% endif %}
+            </div>
+        </div>
+        <a href="{{project.website_link}}" target="_blank" class="project__link">
+            {{project.website_link}}
+        </a>
+        <div class="column column--2of3">
+          <a href="{% url 'project' project.owner.id %}" class="singleProject__developer">{{project.owner.username}}</a>
+          <h2 class="singleProject__title">{{project.title}}</h2>
+          <h3 class="singleProject__subtitle">About the Project</h3>
+          <div class="singleProject__info">
+            {{project.decription}}
+          </div>
+
+        {% if project.status == 'ready' and project.cleaned_zip %}
+        <a href="{{project.cleaned_zip.url}}" class="btn btn--main btn--md" style="margin-top: 1.5rem;" download>
+        Download ZIP
+        </a>
+        {% endif %}
+
+        
+        </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+{% endblock content %}
