@@ -1,4 +1,4 @@
-# SiteSucker 🕷️
+# SiteSucker
 
 A Django web application that scrapes, cleans, and packages website assets for download. Users submit a URL and receive a cleaned, self-contained ZIP file of the site's HTML, CSS, and JavaScript — with tracking scripts removed and code optimized.
 
